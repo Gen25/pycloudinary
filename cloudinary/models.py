@@ -24,7 +24,7 @@ def with_metaclass(meta, *bases):
             return meta(name, bases, d)
     return type.__new__(metaclass, 'temporary_class', (), {})
 
-class CloudinaryField(with_metaclass(models.SubfieldBase, models.Field)):
+class CloudinaryField(with_metaclass(models.Field)):
     description = "A resource stored in Cloudinary"
 
     def __init__(self, *args, **kwargs):
