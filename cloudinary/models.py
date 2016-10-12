@@ -11,7 +11,9 @@ try:
 except ImportError:
     pass
 
+
 CLOUDINARY_FIELD_DB_RE = r'(?:(?P<resource_type>image|raw|video)/(?P<type>upload|private|authenticated)/)?(?:v(?P<version>\d+)/)?(?P<public_id>.*?)(\.(?P<format>[^.]+))?$'
+
 
 # Taken from six - https://pythonhosted.org/six/
 def with_metaclass(meta, *bases):
@@ -24,7 +26,8 @@ def with_metaclass(meta, *bases):
             return meta(name, bases, d)
     return type.__new__(metaclass, 'temporary_class', (), {})
 
-class CloudinaryField(with_metaclass(models.Field)):
+
+class CloudinaryField(models.Field):
     description = "A resource stored in Cloudinary"
 
     def __init__(self, *args, **kwargs):
